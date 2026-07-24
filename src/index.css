@@ -1,0 +1,93 @@
+@import "tailwindcss";
+
+@theme {
+  /* Override amber with DarkGoldenRod luxury gold #B8860B */
+  --color-amber-200: #E3BC49; /* Lighter */
+  --color-amber-300: #D6AC47; /* Soft */
+  --color-amber-400: #B8860B; /* Primary #B8860B */
+  --color-amber-500: #996E09; /* Deep */
+  --color-amber-600: #7D5907; /* Dark */
+}
+
+@layer base {
+  :root {
+    --gold: #B8860B;
+    --gold-glow: rgba(184, 134, 11, 0.4);
+    --dark-bg: #090a0f;
+  }
+
+  body {
+    background-color: #06070a;
+    color: #f3f4f6;
+    font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 35px rgba(212, 175, 55, 0.8));
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-jaguar-glow {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+.animate-float {
+  animation: floatSlow 4s infinite ease-in-out;
+}
+
+/* Glassmorphism utilities */
+.glass-panel {
+  background: rgba(12, 13, 20, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-nav {
+  background: rgba(6, 7, 10, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* Smooth Video overlay gradient */
+.video-overlay-gradient {
+  background: linear-gradient(
+    180deg,
+    rgba(6, 7, 10, 0.7) 0%,
+    rgba(6, 7, 10, 0.2) 40%,
+    rgba(6, 7, 10, 0.4) 70%,
+    rgba(6, 7, 10, 0.95) 100%
+  );
+}
+
+/* Hide scrollbar for clean UI */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #06070a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2430;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}

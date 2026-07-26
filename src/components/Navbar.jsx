@@ -30,10 +30,7 @@ export function Navbar({ activeSection, setActiveSection, onOpenContact }) {
   const handleNavClick = (id) => {
     setActiveSection(id);
     setMobileMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -49,18 +46,17 @@ export function Navbar({ activeSection, setActiveSection, onOpenContact }) {
         {/* Left: Jaguar Logo & Brand Name (Ferrari style top left logo) */}
         <div 
           onClick={() => handleNavClick('inicio')}
-          className="flex items-center gap-3 cursor-pointer group"
+          className="flex items-center gap-3 cursor-pointer group shrink-0"
         >
           <div className="relative">
-            <div className="absolute -inset-1 bg-[#B8860B]/40 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <img
               src="/jaguar.png"
               alt="Jaguar Luxion"
-              className="w-10 h-10 sm:w-12 sm:h-12 object-contain relative z-10 drop-shadow-[0_0_12px_rgba(212,175,55,0.6)] group-hover:scale-110 transition-transform duration-300"
+              className="w-10 h-10 sm:w-12 sm:h-12 object-contain relative z-10 group-hover:scale-105 transition-transform duration-300"
             />
           </div>
           <div className="flex flex-col">
-            <span className="text-lg sm:text-xl font-extrabold tracking-[0.2em] text-white uppercase group-hover:text-[#B8860B] transition-colors">
+            <span className="text-lg sm:text-xl font-extrabold tracking-[0.2em] text-white uppercase transition-colors">
               LUXION
             </span>
             <span className="text-[9px] tracking-[0.35em] text-[#B8860B] font-semibold uppercase -mt-1">
@@ -69,15 +65,15 @@ export function Navbar({ activeSection, setActiveSection, onOpenContact }) {
           </div>
         </div>
 
-        {/* Center: Perfectly Centered Navigation Links (as shown in user's 2nd reference image) */}
-        <nav className="hidden md:flex items-center justify-center space-x-6 lg:space-x-8">
+        {/* Center: Perfectly Centered Navigation Links */}
+        <nav className="hidden md:flex flex-1 items-center justify-center space-x-8 lg:space-x-12">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
-                className={`relative py-1 text-sm font-medium transition-all duration-300 tracking-wide ${
+                className={`relative py-1 text-base lg:text-lg font-medium transition-all duration-300 tracking-wider ${
                   isActive
                     ? 'text-white font-bold'
                     : 'text-gray-300 hover:text-white'
@@ -95,23 +91,11 @@ export function Navbar({ activeSection, setActiveSection, onOpenContact }) {
           })}
         </nav>
 
-        {/* Right: Action CTA & Mobile Menu Toggle */}
-        <div className="flex items-center gap-3 sm:gap-4">
-          <button
-            onClick={onOpenContact}
-            className="relative group overflow-hidden rounded-full p-[1px] focus:outline-none"
-          >
-            <span className="absolute inset-0 bg-gradient-to-r from-[#B8860B] via-amber-200 to-[#B8860B] rounded-full group-hover:opacity-100 transition-opacity" />
-            <span className="relative flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2 rounded-full bg-black text-[#B8860B] group-hover:text-black group-hover:bg-[#B8860B] transition-all duration-300 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-lg">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Cotizar VIP</span>
-            </span>
-          </button>
-
-          {/* Mobile menu trigger */}
+        {/* Right: Mobile Menu Toggle Only (Removed CTA for desktop) */}
+        <div className="flex items-center gap-3 sm:gap-4 md:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-gray-300 hover:text-[#B8860B] focus:outline-none"
+            className="p-2 text-gray-300 hover:text-[#B8860B] focus:outline-none"
             aria-label="Menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

@@ -9,14 +9,14 @@ export function Catalog({ onSelectCar }) {
   const categories = [
     { id: 'all', label: 'Todos los Modelos' },
     { id: 'supercars', label: 'Supercars' },
-    { id: 'deportivos', label: 'Deportivos' },
-    { id: 'de_lujo', label: 'De Lujo' },
-    { id: 'luxury', label: 'Luxury' },
+    { id: 'hiperdeportivos', label: 'Hiperdeportivos' },
+    { id: 'Grand Tourer', label: 'Grand Tourer' },
+    { id: 'SUV de lujo', label: 'SUV de lujo' },
   ];
 
   const filteredCars = activeCategory === 'all'
     ? cars
-    : cars.filter((c) => (c.category || '').toLowerCase().trim() === activeCategory);
+    : cars.filter((c) => (c.category || '').toLowerCase().trim() === (activeCategory || '').toLowerCase().trim());
 
   if (error) {
     return (
@@ -27,13 +27,13 @@ export function Catalog({ onSelectCar }) {
   }
 
   return (
-    <section id="catalogo" className="py-24 bg-[#090a0f] text-white relative">
+    <section id="catalogo" className="pt-16 pb-16 bg-[#090a0f] text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center mb-16 pt-10">
+        <div className="text-center mb-8">
           <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-white mb-4">
-            Catálogo de <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#B8860B] to-amber-400">Superdeportivos</span>
+            Catálogo <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#B8860B] to-amber-400">Exclusivo</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
             Cada vehículo es moldeado con especificaciones personalizadas, aleaciones de carbono aeroespacial y acabados de pintura artesanal.
@@ -41,7 +41,7 @@ export function Catalog({ onSelectCar }) {
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mb-8">
           {categories.map((cat) => (
             <button
               key={cat.id}
@@ -69,11 +69,11 @@ export function Catalog({ onSelectCar }) {
             {filteredCars.map((car) => (
               <div
                 key={car.id}
-              className="group relative rounded-2xl overflow-hidden bg-gradient-to-b from-white/5 to-black/80 border border-white/10 hover:border-[#B8860B]/50 transition-all duration-500 hover:-translate-y-2 shadow-2xl flex flex-col"
+              className="group relative rounded-2xl overflow-hidden bg-[#0c0d12] border border-transparent hover:border-[#B8860B]/30 transition-all duration-500 hover:-translate-y-2 shadow-2xl flex flex-col"
             >
               {/* Image Container */}
               <div 
-                className="relative h-64 overflow-hidden cursor-pointer"
+                className="relative h-64 overflow-hidden cursor-pointer bg-black"
                 onClick={() => onSelectCar(car)}
               >
                 <img
@@ -114,7 +114,7 @@ export function Catalog({ onSelectCar }) {
                     </div>
                     <div className="flex flex-col justify-end">
                       <span className="text-[10px] uppercase text-gray-500 block mb-1">Aceleración</span>
-                      <span className="text-sm font-bold text-[#B8860B] leading-none">{car.speed}</span>
+                      <span className="text-sm font-bold text-[#B8860B] leading-none">{car.speed || '-'}</span>
                     </div>
                   </div>
                 </div>
@@ -122,7 +122,11 @@ export function Catalog({ onSelectCar }) {
                 <div className="flex items-center justify-between pt-4 border-t border-white/10">
                   <div>
                     <span className="text-[10px] text-gray-400 uppercase block">Precio Referencial</span>
-                    <span className="text-lg font-extrabold text-[#B8860B]">{car.price}</span>
+                    <span className="text-lg font-extrabold text-[#B8860B]">
+                      {typeof car.price === 'number' 
+                        ? new Intl.NumberFormat("es-PE", { style: "currency", currency: "PEN", maximumFractionDigits: 0 }).format(car.price)
+                        : car.price}
+                    </span>
                   </div>
                 </div>
                 </div>

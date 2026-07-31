@@ -92,7 +92,7 @@ export function CarDetails({ car, onBack, onOpenContact, onSelectCar }) {
                 </div>
                 <div className="bg-[#090a0f] p-4 rounded-xl border border-white/5">
                   <span className="text-gray-500 text-xs block mb-1">0-100 km/h</span>
-                  <span className="text-white font-bold">{car.speed ? car.speed.replace('0-100 en ', '') : ''}</span>
+                  <span className="text-white font-bold">{car.speed ? car.speed.replace('0-100 en ', '').replace('0-100 km/h en ', '') : '-'}</span>
                 </div>
                 <div className="md:col-span-2 bg-[#090a0f] p-4 rounded-xl border border-white/5">
                   <span className="text-gray-500 text-xs block mb-1">Transmisión</span>
@@ -133,7 +133,9 @@ export function CarDetails({ car, onBack, onOpenContact, onSelectCar }) {
               <div className="bg-[#090a0f] border border-[#B8860B]/30 rounded-3xl p-8 shadow-[0_10px_40px_rgba(184,134,11,0.15)] flex flex-col">
                 <span className="text-gray-400 text-sm uppercase tracking-widest block mb-2">Precio Estimado</span>
                 <div className="text-4xl font-black text-white mb-8">
-                  {car.price}
+                  {typeof car.price === 'number' 
+                    ? new Intl.NumberFormat("es-PE", { style: "currency", currency: "PEN", maximumFractionDigits: 0 }).format(car.price)
+                    : car.price}
                 </div>
 
                 <div className="space-y-4 mb-8">
@@ -218,7 +220,11 @@ export function CarDetails({ car, onBack, onOpenContact, onSelectCar }) {
                 <div className="p-5">
                   <span className="text-xs text-gray-500 uppercase block mb-1">Luxion Motors</span>
                   <h3 className="text-lg font-bold text-white mb-2 group-hover:text-[#B8860B] transition-colors line-clamp-1">{simCar.name}</h3>
-                  <div className="text-xl font-black text-[#B8860B]">{simCar.price}</div>
+                  <div className="text-xl font-black text-[#B8860B]">
+                    {typeof simCar.price === 'number' 
+                      ? new Intl.NumberFormat("es-PE", { style: "currency", currency: "PEN", maximumFractionDigits: 0 }).format(simCar.price)
+                      : simCar.price}
+                  </div>
                 </div>
               </div>
             ))}

@@ -264,15 +264,12 @@
 
 /* Hide scrollbar for clean UI */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 0px;
+  background: transparent;
 }
 ::-webkit-scrollbar-track {
-  background: #06070a;
+  background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1f2430;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #d4af37;
+  background: transparent;
 }

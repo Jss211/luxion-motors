@@ -37,7 +37,7 @@ export function Navbar({ activeSection, setActiveSection, onOpenContact }) {
     <header
       className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
         scrolled
-          ? 'bg-black/90 backdrop-blur-xl border-b border-[#B8860B]/20 py-3 shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
+          ? 'bg-black/90 backdrop-blur-xl py-3 shadow-[0_10px_30px_rgba(0,0,0,0.8)]'
           : 'bg-gradient-to-b from-black/90 via-black/50 to-transparent py-5'
       }`}
     >

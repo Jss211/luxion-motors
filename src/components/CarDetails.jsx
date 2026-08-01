@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { ArrowLeft, CheckCircle2, PhoneCall, Mail } from 'lucide-react';
 import { useCars } from '../hooks/useCars';
 import { GradientButton } from './ui/gradient-button';
+import { ShineBorder } from './ui/shine-border';
 
 export function CarDetails({ car, onBack, onOpenContact, onSelectCar }) {
   const { cars } = useCars();
@@ -130,47 +131,49 @@ export function CarDetails({ car, onBack, onOpenContact, onSelectCar }) {
             <div className="space-y-6">
               
               {/* Card 1: Price and Contact */}
-              <div className="bg-[#090a0f] border border-[#B8860B]/30 rounded-3xl p-8 shadow-[0_10px_40px_rgba(184,134,11,0.15)] flex flex-col">
-                <span className="text-gray-400 text-sm uppercase tracking-widest block mb-2">Precio Estimado</span>
-                <div className="text-4xl font-black text-white mb-8">
-                  {typeof car.price === 'number' 
-                    ? new Intl.NumberFormat("es-PE", { style: "currency", currency: "PEN", maximumFractionDigits: 0 }).format(car.price)
-                    : car.price}
-                </div>
+              <ShineBorder 
+                className="bg-[#090a0f] rounded-3xl p-8 shadow-[0_10px_40px_rgba(184,134,11,0.15)] flex flex-col w-full"
+                color={["#B8860B", "#F5D061", "#B8860B"]}
+                borderRadius={24}
+                borderWidth={2}
+                duration={6}
+              >
+                <div className="z-10 relative">
+                  <span className="text-gray-400 text-sm uppercase tracking-widest block mb-2">Precio Estimado</span>
+                  <div className="text-4xl font-black text-white mb-8">
+                    {typeof car.price === 'number' 
+                      ? new Intl.NumberFormat("es-PE", { style: "currency", currency: "PEN", maximumFractionDigits: 0 }).format(car.price)
+                      : car.price}
+                  </div>
 
-                <div className="space-y-4 mb-8">
-                  <GradientButton 
-                    variant="variant"
-                    onClick={() => onOpenContact(car.name)}
-                    className="w-full uppercase tracking-widest font-bold h-auto py-4 rounded-xl"
-                  >
-                    Solicitar Información
-                  </GradientButton>
-                  <button 
-                    onClick={() => onOpenContact(`Test Drive: ${car.name}`)}
-                    className="w-full py-4 rounded-xl bg-[#090a0f] border border-white/20 text-white font-bold uppercase tracking-widest hover:border-[#B8860B] hover:text-[#B8860B] transition-colors"
-                  >
-                    Agendar Test Drive
-                  </button>
-                </div>
+                  <div className="space-y-4 mb-8">
+                    <GradientButton 
+                      variant="variant"
+                      onClick={() => onOpenContact(car.name)}
+                      className="w-full uppercase tracking-widest font-bold h-auto py-4 rounded-xl"
+                    >
+                      Solicitar Información
+                    </GradientButton>
+                  </div>
 
-                <div className="border-t border-white/10 pt-6 space-y-4 text-sm">
-                  <div className="flex items-center gap-4 text-gray-400">
-                    <PhoneCall className="w-5 h-5 text-[#B8860B]" />
-                    <div>
-                      <span className="block text-xs uppercase opacity-70">Llámanos</span>
-                      <span className="text-white font-medium">+1 (555) 999-0000</span>
+                  <div className="border-t border-white/10 pt-6 space-y-4 text-sm">
+                    <div className="flex items-center gap-4 text-gray-400">
+                      <PhoneCall className="w-5 h-5 text-[#B8860B]" />
+                      <div>
+                        <span className="block text-xs uppercase opacity-70">Llámanos</span>
+                        <span className="text-white font-medium">985182856</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-4 text-gray-400">
+                      <Mail className="w-5 h-5 text-[#B8860B]" />
+                      <div>
+                        <span className="block text-xs uppercase opacity-70">Email</span>
+                        <span className="text-white font-medium">jordapmrojasbazan@gmail.com</span>
+                      </div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4 text-gray-400">
-                    <Mail className="w-5 h-5 text-[#B8860B]" />
-                    <div>
-                      <span className="block text-xs uppercase opacity-70">Email</span>
-                      <span className="text-white font-medium">vip@luxionmotors.com</span>
-                    </div>
-                  </div>
                 </div>
-              </div>
+              </ShineBorder>
 
               {/* Card 2: Datos Rápidos */}
               <div className="bg-white/5 border border-white/10 rounded-3xl p-8 shadow-xl">

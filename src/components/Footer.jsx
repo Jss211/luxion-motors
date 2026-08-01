@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Share2, Globe, Camera, ShieldCheck } from 'lucide-react';
+import { TextWordCarousel } from './ui/text-word-carousel';
 
 export function Footer({ onOpenContact }) {
   return (
@@ -46,7 +47,9 @@ export function Footer({ onOpenContact }) {
 
           {/* Col 3: Contact Info */}
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest text-[#B8860B] mb-6">Contacto VIP</h4>
+            <h4 className="text-sm font-bold uppercase tracking-widest text-[#B8860B] mb-6 flex items-center gap-1.5 flex-wrap">
+              Contacto <TextWordCarousel words={['VIP', 'Exclusivo', 'Directo']} interval={3} className="text-white block font-extrabold" />
+            </h4>
             <div className="space-y-4 text-sm text-gray-300">
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-[#B8860B] shrink-0 mt-0.5" />

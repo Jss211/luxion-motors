@@ -7,6 +7,20 @@
   --color-amber-400: #B8860B; /* Primary #B8860B */
   --color-amber-500: #996E09; /* Deep */
   --color-amber-600: #7D5907; /* Dark */
+
+  --animate-shine: shine var(--duration) infinite linear;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  to {
+    background-position: 0% 0%;
+  }
 }
 
 @layer base {

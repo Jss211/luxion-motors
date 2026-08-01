@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, Shield, Zap, Sparkles, Filter } from 'lucide-react';
 import { useCars } from '../hooks/useCars';
+import { TextWordCarousel } from './ui/text-word-carousel';
 
 export function Catalog({ onSelectCar }) {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -33,7 +34,7 @@ export function Catalog({ onSelectCar }) {
         {/* Section Header */}
         <div className="text-center mb-8">
           <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-white mb-4">
-            Catálogo <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#B8860B] to-amber-400">Exclusivo</span>
+            Catálogo <TextWordCarousel words={['Exclusivo', 'Premium', 'de Lujo', 'V.I.P']} interval={3} className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#B8860B] to-amber-400" />
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
             Cada vehículo es moldeado con especificaciones personalizadas, aleaciones de carbono aeroespacial y acabados de pintura artesanal.
@@ -94,7 +95,7 @@ export function Catalog({ onSelectCar }) {
               </div>
 
               {/* Card Details */}
-              <div className="p-6 flex-1 flex flex-col justify-between">
+              <div className="p-6 flex-1 flex flex-col justify-between relative -mt-[1px] bg-[#0c0d12] z-10">
                 <div>
                   <h3 className="text-xl font-bold text-white group-hover:text-[#B8860B] transition-colors mb-2">
                     {car.name}

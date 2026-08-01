@@ -1,5 +1,6 @@
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
+import { TextWordCarousel } from './ui/text-word-carousel';
 
 export function Testimonials() {
   const testimonials = [
@@ -34,8 +35,8 @@ export function Testimonials() {
           <span className="text-[#B8860B] text-xs font-semibold uppercase tracking-[0.3em] block mb-2">
             EXPERIENCIAS DE CLIENTES VIP
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-white">
-            Lo que dicen <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#B8860B] to-amber-400">Nuestros Clientes</span>
+          <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-white flex flex-wrap justify-center gap-x-3 gap-y-2">
+            Lo que dicen <TextWordCarousel words={['Nuestros Clientes', 'Coleccionistas', 'Expertos']} interval={3} className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#B8860B] to-amber-400 block" />
           </h2>
         </div>
 

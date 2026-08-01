@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Camera, Maximize2 } from 'lucide-react';
+import { TextWordCarousel } from './ui/text-word-carousel';
 
 export function Gallery() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -46,7 +47,7 @@ export function Gallery() {
             GALERÍA DE PROYECTOS
           </span>
           <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-white">
-            Excelencia en <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#B8860B] to-amber-400">Imágenes</span>
+            Excelencia en <TextWordCarousel words={['Imágenes', 'Detalles', 'Artesanía', 'Diseño']} interval={3} className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#B8860B] to-amber-400" />
           </h2>
         </div>
 

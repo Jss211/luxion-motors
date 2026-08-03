@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Eye, Shield, Zap, Sparkles, Filter } from 'lucide-react';
 import { useCars } from '../hooks/useCars';
-import { TextWordCarousel } from './ui/text-word-carousel';
+import { Typewriter } from './ui/typewriter';
 
 export function Catalog({ onSelectCar }) {
   const [activeCategory, setActiveCategory] = useState('all');
@@ -28,13 +28,13 @@ export function Catalog({ onSelectCar }) {
   }
 
   return (
-    <section id="catalogo" className="pt-16 pb-16 bg-[#090a0f] text-white relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="catalogo" className="py-24 bg-black text-white relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="text-center mb-8">
           <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-white mb-4">
-            Catálogo <TextWordCarousel words={['Exclusivo', 'Premium', 'de Lujo', 'V.I.P']} interval={3} className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#B8860B] to-amber-400" />
+            Catálogo <Typewriter words={['Exclusivo', 'Premium', 'de Lujo', 'V.I.P']} delayBetweenWords={2000} className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#B8860B] to-amber-400" />
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
             Cada vehículo es moldeado con especificaciones personalizadas, aleaciones de carbono aeroespacial y acabados de pintura artesanal.

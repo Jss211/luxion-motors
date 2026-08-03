@@ -81,7 +81,7 @@ export default function App() {
       case 'galeria':
         return (
           <div className="pt-20">
-            <Gallery />
+            <Gallery onSelectCar={handleSelectCarDetails} />
           </div>
         );
       case 'testimonios':
@@ -109,7 +109,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#06070a] text-white selection:bg-[#B8860B] selection:text-black">
+    <div className="min-h-screen bg-black text-white selection:bg-[#B8860B] selection:text-black">
       
       {/* 1. Simple Jaguar Loading Screen */}
       <SplashIntro 

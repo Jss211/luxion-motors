@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Typewriter } from './ui/typewriter-text';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import { Typewriter } from './ui/typewriter';
 import { ChevronRight } from 'lucide-react';
 
 export function HeroVideo({ onOpenContact, onExploreCatalog }) {
@@ -7,7 +7,7 @@ export function HeroVideo({ onOpenContact, onExploreCatalog }) {
   const [progress, setProgress] = useState(0);
   const videoRefs = useRef([]);
 
-  const slides = [
+  const slides = useMemo(() => [
     {
       id: 0,
       videoSrc: '/hero-video.mp4',
@@ -53,7 +53,7 @@ export function HeroVideo({ onOpenContact, onExploreCatalog }) {
       ctaText: 'SOLICITAR CITA VIP',
       action: onOpenContact
     }
-  ];
+  ], [onExploreCatalog, onOpenContact]);
 
   // Handle slide changes
   const goToSlide = (index) => {
@@ -133,12 +133,11 @@ export function HeroVideo({ onOpenContact, onExploreCatalog }) {
           <div className="text-xl sm:text-3xl font-medium text-amber-200 drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] max-w-3xl">
             <Typewriter
               key={`typewriter-${currentSlide}`}
-              text={slides[currentSlide].typewriterText}
+              words={slides[currentSlide].typewriterText}
               speed={70}
-              deleteSpeed={35}
-              delay={2000}
-              loop={true}
-              cursor="|"
+              delayBetweenWords={2000}
+              cursor={true}
+              cursorChar="|"
               className="font-light tracking-wide text-white drop-shadow-lg"
             />
           </div>

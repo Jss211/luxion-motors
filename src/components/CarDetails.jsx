@@ -3,6 +3,7 @@ import { ArrowLeft, CheckCircle2, PhoneCall, Mail } from 'lucide-react';
 import { useCars } from '../hooks/useCars';
 import { GradientButton } from './ui/gradient-button';
 import { ShineBorder } from './ui/shine-border';
+import { WordmarkFooter } from './ui/wordmark-footer';
 
 export function CarDetails({ car, onBack, onOpenContact, onSelectCar }) {
   const { cars } = useCars();
@@ -17,7 +18,7 @@ export function CarDetails({ car, onBack, onOpenContact, onSelectCar }) {
   const similarCars = cars.filter(c => (c.category || '').toLowerCase().trim() === (car.category || '').toLowerCase().trim() && c.id !== car.id).slice(0, 3);
 
   return (
-    <div className="min-h-screen bg-[#06070a] text-white pt-24 pb-16">
+    <div className="min-h-screen bg-black text-white pt-24 pb-16">
       
       {/* Back button */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
@@ -32,28 +33,34 @@ export function CarDetails({ car, onBack, onOpenContact, onSelectCar }) {
 
       {/* Hero Image Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="relative w-full h-[50vh] min-h-[400px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/10">
+        <ShineBorder 
+          className="relative w-full h-[50vh] min-h-[400px] rounded-2xl overflow-hidden !p-0"
+          color={["rgba(184,134,11,0.0)", "rgba(184,134,11,0.35)", "rgba(184,134,11,0.0)"]} // Very subtle, semi-transparent gold
+          borderRadius={16} // rounded-2xl is 16px
+          borderWidth={1}
+          duration={12} // Slow animation
+        >
           <img 
             src={car.image} 
             alt={car.name} 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
           
-          <div className="absolute bottom-8 left-8 right-8">
+          <div className="absolute bottom-8 left-8 right-8 z-10">
             {car.badge && (
-              <span className="inline-block px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-[#B8860B]/40 text-[#B8860B] text-xs font-bold uppercase tracking-wider mb-4">
+              <span className="inline-block px-3 py-1 rounded-full bg-black/80 backdrop-blur-md border border-[#B8860B]/40 text-[#B8860B] text-xs font-bold uppercase tracking-wider mb-2">
                 {car.badge}
               </span>
             )}
-            <h1 className="text-4xl sm:text-6xl font-black text-white uppercase tracking-tight mb-2 drop-shadow-lg">
-              {car.name}
-            </h1>
-            <p className="text-xl text-gray-300 font-light">
+            
+            <WordmarkFooter brandName={car.name} />
+
+            <p className="text-xl text-gray-300 font-light mt-1">
               {car.year || '2026'}
             </p>
           </div>
-        </div>
+        </ShineBorder>
       </div>
 
       {/* Content Grid */}
@@ -79,23 +86,23 @@ export function CarDetails({ car, onBack, onOpenContact, onSelectCar }) {
                 Especificaciones Técnicas
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-[#090a0f] p-4 rounded-xl border border-white/5">
+                <div className="bg-zinc-950 p-4 rounded-xl border border-white/5">
                   <span className="text-gray-500 text-xs block mb-1">Motor</span>
                   <span className="text-white font-bold">{car.motor || 'V12 5.2L Twin-Turbo'}</span>
                 </div>
-                <div className="bg-[#090a0f] p-4 rounded-xl border border-white/5">
+                <div className="bg-zinc-950 p-4 rounded-xl border border-white/5">
                   <span className="text-gray-500 text-xs block mb-1">Potencia</span>
                   <span className="text-white font-bold">{car.power}</span>
                 </div>
-                <div className="bg-[#090a0f] p-4 rounded-xl border border-white/5">
+                <div className="bg-zinc-950 p-4 rounded-xl border border-white/5">
                   <span className="text-gray-500 text-xs block mb-1">Velocidad Máxima</span>
                   <span className="text-white font-bold">{car.top_speed || '340 km/h'}</span>
                 </div>
-                <div className="bg-[#090a0f] p-4 rounded-xl border border-white/5">
+                <div className="bg-zinc-950 p-4 rounded-xl border border-white/5">
                   <span className="text-gray-500 text-xs block mb-1">0-100 km/h</span>
                   <span className="text-white font-bold">{car.speed ? car.speed.replace('0-100 en ', '').replace('0-100 km/h en ', '') : '-'}</span>
                 </div>
-                <div className="md:col-span-2 bg-[#090a0f] p-4 rounded-xl border border-white/5">
+                <div className="md:col-span-2 bg-zinc-950 p-4 rounded-xl border border-white/5">
                   <span className="text-gray-500 text-xs block mb-1">Transmisión</span>
                   <span className="text-white font-bold">{car.transmission || '8-Speed Automatic Dual-Clutch'}</span>
                 </div>
@@ -132,7 +139,7 @@ export function CarDetails({ car, onBack, onOpenContact, onSelectCar }) {
               
               {/* Card 1: Price and Contact */}
               <ShineBorder 
-                className="bg-[#090a0f] rounded-3xl p-8 shadow-[0_10px_40px_rgba(184,134,11,0.15)] flex flex-col w-full"
+                className="bg-zinc-950 rounded-3xl p-8 shadow-[0_10px_40px_rgba(184,134,11,0.15)] flex flex-col w-full"
                 color={["#B8860B", "#F5D061", "#B8860B"]}
                 borderRadius={24}
                 borderWidth={2}
@@ -215,9 +222,9 @@ export function CarDetails({ car, onBack, onOpenContact, onSelectCar }) {
                 onClick={() => {
                   onSelectCar(simCar);
                 }}
-                className="group cursor-pointer bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-[#B8860B]/50 transition-all shadow-xl"
+                className="group cursor-pointer bg-black rounded-2xl overflow-hidden transition-all shadow-xl relative"
               >
-                <div className="h-48 overflow-hidden relative">
+                <div className="h-48 relative rounded-t-2xl overflow-hidden transform-gpu">
                   <img src={simCar.image} alt={simCar.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 </div>
                 <div className="p-5">

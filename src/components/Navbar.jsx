@@ -68,7 +68,7 @@ export function Navbar({ activeSection, setActiveSection, onOpenContact }) {
         {/* Center: Perfectly Centered Navigation Links */}
         <nav className="hidden md:flex flex-1 items-center justify-center space-x-8 lg:space-x-12">
           {navLinks.map((link) => {
-            const isActive = activeSection === link.id;
+            const isActive = activeSection === link.id || (link.id === 'catalogo' && activeSection === 'car-details');
             return (
               <button
                 key={link.id}
@@ -106,17 +106,20 @@ export function Navbar({ activeSection, setActiveSection, onOpenContact }) {
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-black/95 backdrop-blur-2xl border-b border-[#B8860B]/30 px-6 pt-4 pb-6 mt-3 space-y-3 animate-fadeIn">
-          {navLinks.map((link) => (
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id || (link.id === 'catalogo' && activeSection === 'car-details');
+            return (
             <button
               key={link.id}
               onClick={() => handleNavClick(link.id)}
               className={`block w-full text-left py-2.5 text-base font-medium tracking-wider transition-colors border-b border-white/5 ${
-                activeSection === link.id ? 'text-[#B8860B] font-bold pl-2 border-[#B8860B]/40' : 'text-gray-300 hover:text-white'
+                isActive ? 'text-[#B8860B] font-bold pl-2 border-[#B8860B]/40' : 'text-gray-300 hover:text-white'
               }`}
             >
               {link.label}
             </button>
-          ))}
+            );
+          })}
           <div className="pt-2">
             <button
               onClick={() => {

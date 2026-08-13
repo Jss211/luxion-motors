@@ -7,9 +7,11 @@ import { Services } from './components/Services';
 import { Gallery } from './components/Gallery';
 import { Testimonials } from './components/Testimonials';
 import { AboutUs } from './components/AboutUs';
+import { Contact } from './components/Contact';
 import { ContactModal } from './components/ContactModal';
 import { Footer } from './components/Footer';
 import { CarDetails } from './components/CarDetails';
+import { Terms } from './components/Terms';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('inicio');
@@ -96,6 +98,18 @@ export default function App() {
             <AboutUs />
           </div>
         );
+      case 'contacto':
+        return (
+          <div className="pt-20">
+            <Contact />
+          </div>
+        );
+      case 'terminos':
+        return (
+          <div className="pt-20">
+            <Terms />
+          </div>
+        );
       default:
         return (
           <>
@@ -130,7 +144,7 @@ export default function App() {
       </main>
 
       {/* 4. Footer */}
-      <Footer onOpenContact={() => setIsContactOpen(true)} />
+      <Footer onOpenContact={() => setIsContactOpen(true)} setActiveSection={setActiveSection} />
 
       {/* 5. Contact & Quote Modal */}
       <ContactModal

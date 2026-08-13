@@ -11,8 +11,8 @@ export function Gallery({ onSelectCar }) {
           <span className="text-[#B8860B] text-xs font-semibold uppercase tracking-[0.3em] block mb-2">
             CATÁLOGO EXCLUSIVO
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-white">
-            Descubre nuestros <Typewriter words={['Superdeportivos', 'SUVs de Lujo', 'Modelos Clásicos', 'Hypercars']} delayBetweenWords={2000} className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#B8860B] to-amber-400" />
+          <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-white flex flex-wrap justify-center gap-x-3 gap-y-2">
+            Descubre nuestros <Typewriter words={['Modelos Destacados', 'Obras de Arte', 'Hiperdeportivos']} delayBetweenWords={2500} className="text-[#B8860B]" />
           </h2>
         </div>
 

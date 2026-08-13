@@ -17,39 +17,41 @@ export function Typewriter({
   const [charIndex, setCharIndex] = useState(0)
   const [showCursor, setShowCursor] = useState(true)
 
-  const currentWord = words[wordIndex]
+  const wordsString = JSON.stringify(words);
 
   useEffect(() => {
+    const parsedWords = JSON.parse(wordsString);
+    const currentWord = parsedWords[wordIndex];
+    let delay = isDeleting ? speed / 2 : speed
+
+    if (!isDeleting && charIndex === currentWord.length) {
+      delay = delayBetweenWords
+    }
+
     const timeout = setTimeout(
       () => {
-        // Typing logic
         if (!isDeleting) {
           if (charIndex < currentWord.length) {
             setDisplayText(currentWord.substring(0, charIndex + 1))
             setCharIndex(charIndex + 1)
           } else {
-            // Word is complete, wait before deleting
-            setTimeout(() => {
-              setIsDeleting(true)
-            }, delayBetweenWords)
+            setIsDeleting(true)
           }
         } else {
-          // Deleting logic
           if (charIndex > 0) {
             setDisplayText(currentWord.substring(0, charIndex - 1))
             setCharIndex(charIndex - 1)
           } else {
-            // Word is deleted, move to next word
             setIsDeleting(false)
-            setWordIndex((prev) => (prev + 1) % words.length)
+            setWordIndex((prev) => (prev + 1) % parsedWords.length)
           }
         }
       },
-      isDeleting ? speed / 2 : speed,
+      delay,
     )
 
     return () => clearTimeout(timeout)
-  }, [charIndex, currentWord, isDeleting, speed, delayBetweenWords, wordIndex, words])
+  }, [charIndex, isDeleting, speed, delayBetweenWords, wordIndex, wordsString])
 
   // Cursor blinking effect
   useEffect(() => {

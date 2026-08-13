@@ -43,7 +43,7 @@ export function Services({ onSelectService }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-5xl font-extrabold uppercase text-white tracking-tight">
-            Servicios de <Typewriter words={['Carrocería', 'Restauración', 'Personalización', 'Mantenimiento']} delayBetweenWords={2000} className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#B8860B] to-amber-400" />
+            Servicios de <Typewriter words={['Alto Rendimiento', 'Excelencia', 'Precisión']} delayBetweenWords={2500} className="text-[#B8860B]" />
           </h2>
           <p className="text-gray-400 max-w-xl mx-auto text-sm sm:text-base mt-3">
             Dominamos las técnicas más avanzadas para transformar, proteger y personalizar hiperdeportivos.

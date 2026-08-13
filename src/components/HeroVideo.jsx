@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { Typewriter } from './ui/typewriter';
 import { ChevronRight } from 'lucide-react';
 
-export function HeroVideo({ onOpenContact, onExploreCatalog }) {
+export function HeroVideo({ onOpenContact, onExploreCatalog, onExploreServices }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
   const videoRefs = useRef([]);
@@ -12,7 +12,7 @@ export function HeroVideo({ onOpenContact, onExploreCatalog }) {
       id: 0,
       videoSrc: '/hero-video.mp4',
       category: 'CARROCERÍA DE ÉLITE',
-      title: 'LUXION HYPERSPORT',
+      title: 'LUXION MOTORS',
       typewriterText: [
         'Carrocerías Bespoke de Fibra de Carbono',
         'Transformamos Sueños en Obras Maestras',
@@ -20,14 +20,14 @@ export function HeroVideo({ onOpenContact, onExploreCatalog }) {
         'El Arte de la Perfección Automotriz'
       ],
       description: 'Diseño exclusivo, modelado en túnel de viento y acabados artesanales sin concesiones.',
-      ctaText: 'DESCUBRIR CARROCERÍA',
+      ctaText: 'EXPLORAR CATÁLOGO',
       action: onExploreCatalog
     },
     {
       id: 1,
       videoSrc: '/hypertorque.mp4',
-      category: 'HIGH PERFORMANCE & TORQUE',
-      title: 'HYPERTORQUE ENGINE',
+      category: 'RENDIMIENTO EXTREMO',
+      title: 'ALTO RENDIMIENTO',
       typewriterText: [
         'Potencia y Fuerza Sin Límites',
         'Restauración & Modificación de Superdeportivos',
@@ -35,14 +35,14 @@ export function HeroVideo({ onOpenContact, onExploreCatalog }) {
         'Ajuste Mecánico de Nivel Competición'
       ],
       description: 'Optimización extrema de carrocería y tren motriz para una dinámica de conducción pura.',
-      ctaText: 'EXPLORAR HYPERTORQUE',
-      action: onExploreCatalog
+      ctaText: 'VER SERVICIOS',
+      action: onExploreServices
     },
     {
       id: 2,
       videoSrc: '/Grabación de pantalla 2026-07-24 013512.mp4',
       category: 'PERSONALIZACIÓN VIP',
-      title: 'BESPOKE COACHBUILDING',
+      title: 'DISEÑO A MEDIDA',
       typewriterText: [
         'Pintura Tricapa Champagne & Obsidian',
         'Kits Aerodinámicos a Medida',

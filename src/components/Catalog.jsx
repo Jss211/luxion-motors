@@ -34,7 +34,7 @@ export function Catalog({ onSelectCar }) {
         {/* Section Header */}
         <div className="text-center mb-8">
           <h2 className="text-3xl sm:text-5xl font-extrabold uppercase tracking-tight text-white mb-4">
-            Catálogo <Typewriter words={['Exclusivo', 'Premium', 'de Lujo', 'V.I.P']} delayBetweenWords={2000} className="text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-[#B8860B] to-amber-400" />
+            Catálogo <Typewriter words={['Exclusivo', 'Premium', 'Bespoke']} delayBetweenWords={2500} className="text-[#B8860B]" />
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto text-sm sm:text-base">
             Cada vehículo es moldeado con especificaciones personalizadas, aleaciones de carbono aeroespacial y acabados de pintura artesanal.

@@ -82,8 +82,8 @@ export function Navbar({ activeSection, setActiveSection, onOpenContact }) {
                 {link.label}
                 {/* Underline indicator */}
                 <span
-                  className={`absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-amber-400 to-[#B8860B] transition-all duration-300 origin-center ${
-                    isActive ? 'scale-x-100 shadow-[0_0_8px_#B8860B]' : 'scale-x-0 hover:scale-x-50'
+                  className={`absolute bottom-0 left-0 w-full h-[2px] bg-[#B8860B] transition-all duration-300 origin-center ${
+                    isActive ? 'scale-x-100' : 'scale-x-0 hover:scale-x-100'
                   }`}
                 />
               </button>

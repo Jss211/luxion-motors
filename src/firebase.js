@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCpiW_Sg0xRMqS51Eyd1pnG_BMH-EC-_z0",
-  authDomain: "luxion-motors.firebaseapp.com",
-  projectId: "luxion-motors",
-  storageBucket: "luxion-motors.firebasestorage.app",
-  messagingSenderId: "572716025142",
-  appId: "1:572716025142:web:23f125f2f5679564651f97",
-  measurementId: "G-7WVP56GQ8C"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);

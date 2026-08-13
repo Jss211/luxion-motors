@@ -116,11 +116,10 @@ export function ContactModal({ isOpen, onClose, selectedItem }) {
               method="POST"
               target="hidden_iframe"
               onSubmit={handleSubmit}
-              className="space-y-4"
+              className="space-y-5"
             >
-              {/* Web3Forms Config */}
-              <input type="hidden" name="access_key" value="75a795ad-7389-45c6-917a-1a5d626d63cd" />
-              <input type="hidden" name="subject" value="Nueva Solicitud VIP - Luxion Motors" />
+              <input type="hidden" name="access_key" value={import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "75a795ad-7389-45c6-917a-1a5d626d63cd"} />
+              <input type="hidden" name="subject" value={`Cotización VIP - ${selectedItem || 'Luxion Motors'}`} />
               <input type="hidden" name="from_name" value="Luxion Motors VIP" />
               
               {/* Tratamiento (Radio) */}
